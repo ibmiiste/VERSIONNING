@@ -3,7 +3,7 @@
              DCL        VAR(&NUMLOT) TYPE(*DEC) LEN(6 0)
              DCL        VAR(&BIBLOT) TYPE(*CHAR) LEN(10)
              DCL        VAR(&NUMLOTC) TYPE(*CHAR) LEN(6)
-             DCL        VAR(&INT) TYPE(*INT) LEN(1)
+             DCL        VAR(&INT) TYPE(*INT) LEN(2)
              DCL        VAR(&SAVLOT) TYPE(*CHAR) LEN(10)
              DCL        VAR(&DESC_LOT) TYPE(*CHAR) LEN(50)
 
