@@ -34,6 +34,7 @@
                                                FROM LISTMEMBER
                                                where MLSEU2=:g_type_source;
 
+
            exec sql open c_source;
 
            exec sql FETCH FROM C_source INTO :ds_listmember;
@@ -44,13 +45,8 @@
              exec sql FETCH FROM C_source INTO :ds_listmember;
            enddo;
 
-
-
            exec sql FETCH FROM C_ORDRE INTO :g_type_source;
          EndDo;
-
-
-
 
          return retour;
 

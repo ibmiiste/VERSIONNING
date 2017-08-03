@@ -7,7 +7,13 @@
     --  >>END-IMPORTANT<<                                           */
     --  >>EXECUTE<<                                                 */
     -->>END-PRE-COMPILER<<                                          */
---DROP TABLE ORDONNANCE;
+set schema=olivier1;
+
+BEGIN
+   DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+      BEGIN END;
+   DROP TABLE ORDONNANCE;
+END; 
 
 CREATE TABLE ORDONNANCE(
     UUID ROWID GENERATED ALWAYS,
