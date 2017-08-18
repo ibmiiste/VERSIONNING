@@ -1,0 +1,32 @@
+      /* >>PRE-COMPILER<<                                                 */
+      /*   >>CRTCMD<<  CRTCLMOD MODULE(&LI/&OB) SRFILE(&SL/&SF) +        */
+      /*                 SRCMBR(&SM);                                     */
+      /*   >>IMPORTANT<<                                                  */
+      /*     >>PARM<<  OPTION(*EVENTF);                                   */
+      /*     >>PARM<<  DBGVIEW(*LIST);                                    */
+      /*   >>END-IMPORTANT<<                                              */
+      /*   >>EXECUTE<<                                                    */
+      /* >>END-PRE-COMPILER<<                                             */
+             PGM        (&USESRCBIB &USESRCFILE &USESRCMBR &LIB &OBJ +
+                          &SRCLIB &SRCFILE &SRCMBR )
+
+             dcl        &USESRCBIB type(*char) len(10)
+             dcl        &USESRCFILE type(*char) len(10)
+             dcl        &USESRCMBR type(*char) len(10)
+             dcl        &LIB type(*char) len(10)
+             dcl        &OBJ type(*char) len(10)
+             dcl        &SRCLIB type(*char) len(10)
+             dcl        &SRCFILE type(*char) len(10)
+             dcl        &SRCMBR type(*char) len(10)
+
+
+             STRPREPRC  USESRCFILE(&USESRCBIB/&USESRCFILE) +
+                          USESRCMBR(&USESRCMBR) OPTION(*EVENTF) +
+                          CHGOBJD(*NO) LIB(&LIB) OBJ(&OBJ) SRCLIB(&SRCLIB) +
+                          SRCFILE(&SRCFILE) SRCMBR(&SRCMBR)
+
+
+             ENDPGM
+
+
+

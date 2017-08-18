@@ -22,7 +22,7 @@
 
 
          exec sql DECLARE C_ordre CURSOR FOR SELECT Type_source
-                                               FROM ORDONNANCEMENT
+                                               FROM ORDONNANCE
                                                ORDER BY ordre;
 
          exec sql open c_ordre;
@@ -40,8 +40,15 @@
            exec sql FETCH FROM C_source INTO :ds_listmember;
            dow sqlcode=0;
 
-             creation( ds_listmember
-                      :ds_parameter_environnement);
+           creation( ds_listmember.MLLIB
+                    :ds_listmember.MLFILE
+                    :ds_listmember.MLNAME
+                    :ds_listmember.MLLIB
+                    :ds_listmember.MLNAME
+                    :ds_listmember.MLLIB
+                    :ds_listmember.MLFILE
+                    :ds_listmember.MLNAME);
+
              exec sql FETCH FROM C_source INTO :ds_listmember;
            enddo;
 
