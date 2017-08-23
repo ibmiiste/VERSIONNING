@@ -3,7 +3,9 @@
     /*   >>LINK<<                                                    */
     /*     >>PARM<<  SRVPGM(&LI/&SM);                                */
     /*     >>PARM<<  MODULE(&LI/CONSTRUTYP +                         */
-    /*                       &LI/CREATION);                          */
+    /*                      &LI/CREATION +                           */
+    /*                      &LI/SCRIPTFTP +                          */
+    /*                      &LI/WFTPSCRIPT);                         */
     /*     >>PARM<<  BNDDIR(SERVICE);                                */
     /*     >>PARM<<  DETAIL(*FULL);                                  */
     /*     >>PARM<<  ALWLIBUPD(*YES);                                */
@@ -14,4 +16,6 @@
              STRPGMEXP  PGMLVL(*CURRENT) SIGNATURE('VERSIONNING_0.1')
                 EXPORT     SYMBOL(ORDONNANCEUR_CONSTRUCTION)
                 EXPORT     SYMBOL(CREATION)
+                EXPORT     SYMBOL(ECRITURE_SCRIPT_FTP)
+                EXPORT     SYMBOL(SCRIPTFTP)
              ENDPGMEXP

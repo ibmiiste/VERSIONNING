@@ -1,0 +1,47 @@
+     /* >>PRE-COMPILER<<                                                 */
+      /*   >>CRTCMD<<  CRTBNDCL SRCFILE(&SL/&SF) SRCMBR(&SM);             */
+      /*   >>IMPORTANT<<                                                  */
+      /*     >>PARM<<  PGM(&LI/&OB);                                      */
+      /*     >>PARM<<  OPTION(*EVENTF);                                   */
+      /*     >>PARM<<  DBGVIEW(*LIST);                                    */
+      /*   >>END-IMPORTANT<<                                              */
+      /*   >>EXECUTE<<                                                    */
+      /* >>END-PRE-COMPILER<<                                             */
+             PGM        PARM(&OBJET &BIBLIO &user &mdp &MACHINE)
+
+             dcl        &objet *char 10
+             dcl        &biblio *char 10
+             dcl        &machine *char 10
+             dcl        &user *char 10
+             dcl        &mdp *char 10
+             dcl        &cmd *char 2000
+
+             DCLPRCOPT  ALWRTVSRC(*YES) TEXT('Livraison sur une autre +
+                          machine') BNDDIR(VERSIOBND)
+             MONMSG     MSGID(CPF0000)
+
+             crtsavf    qtemp/livraison
+
+             SAVOBJ     OBJ(&OBJET) LIB(&BIBLIO) DEV(*SAVF) +
+                          SAVF(QTEMP/LIVRAISON)
+
+             CALLPRC    PRC(SCRIPTFTP) PARM((&MACHINE) (&USER) (&MDP))
+
+             OVRDBF     FILE(INPUT) TOFILE(FTPCMD) MBR(IN)
+             OVRDBF     FILE(OUTPUT) TOFILE(FTPCMD) MBR(OUT)
+
+             FTP        RMTSYS(&MACHINE)
+
+             CHGVAR     VAR(&CMD) VALUE('RSTOBJ OBJ(*ALL) SAVLIB(' *TCAT +
+                          &BIBLIO *TCAT ') DEV(*SAVF) +
+                          SAVF(QGPL/LIVRAISON)')
+             RUNRMTCMD  CMD(&CMD) RMTLOCNAME(&MACHINE *IP) RMTUSER(&USER) +
+                          RMTPWD(&MDP)
+
+             CHGVAR     VAR(&CMD) VALUE('DLTFFILE(QGPL/LIVRAISON) ')
+
+             DLTF       FILE(QGPL/LIVRAISON)
+
+             DLTOVR     FILE(*ALL)
+
+             ENDPGM

@@ -1,0 +1,28 @@
+      /* >>PRE-COMPILER<<                                                 */
+      /*   >>CRTCMD<<  CRTCLMOD MODULE(&LI/&OB) SRCFILE(&SL/&SF) +        */
+      /*                 SRCMBR(&SM);                                     */
+      /*   >>IMPORTANT<<                                                  */
+      /*     >>PARM<<  OPTION(*EVENTF);                                   */
+      /*     >>PARM<<  DBGVIEW(*LIST);                                    */
+      /*   >>END-IMPORTANT<<                                              */
+      /*   >>EXECUTE<<                                                    */
+      /* >>END-PRE-COMPILER<<                                             */
+
+             pgm        PARM((&MACHINE) (&USER) (&MDP))
+
+             dcl        &machine *char 10
+             dcl        &user *char 10
+             dcl        &mdp *char 10
+
+             DCLPRCOPT  ALWRTVSRC(*YES) TEXT('Envoi ftp') BNDDIR(VERSIOBND)
+
+             CRTSRCPF   FILE(QTEMP/FTPCMD) RCDLEN(112)
+
+             ADDPFM     FILE(QTEMP/FTPCMD) MBR(IN) TEXT('Commandes ftp')
+             ADDPFM     FILE(QTEMP/FTPCMD) MBR(OUT) TEXT('log du ftp')
+
+             OVRDBF     FILE(FTPCMD) TOFILE(QTEMP/FTPCMD) MBR(IN)
+
+             CALLPRC    PRC(ECRITURE_SCRIPT_FTP) PARM((&USER) (&MDP))
+
+             ENDPGM
