@@ -7,7 +7,7 @@
       /*   >>END-IMPORTANT<<                                              */
       /*   >>EXECUTE<<                                                    */
       /* >>END-PRE-COMPILER<<                                             */
-             PGM        PARM(&OBJET &BIBLIO &user &mdp &MACHINE)
+             PGM        PARM(&BIBLIO &OBJET &MACHINE &user &mdp )
 
              dcl        &objet *char 10
              dcl        &biblio *char 10
@@ -17,7 +17,7 @@
              dcl        &cmd *char 2000
 
              DCLPRCOPT  ALWRTVSRC(*YES) TEXT('Livraison sur une autre +
-                          machine') BNDDIR(VERSIOBND)
+                          machine') BNDDIR(VERSIONBND)
              MONMSG     MSGID(CPF0000)
 
              crtsavf    qtemp/livraison
