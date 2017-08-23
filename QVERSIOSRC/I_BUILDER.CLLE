@@ -8,22 +8,17 @@
       /*   >>END-IMPORTANT<<                                              */
       /*   >>EXECUTE<<                                                    */
       /* >>END-PRE-COMPILER<<                                             */
-             PGM        PARM(&NUMLOT)
+             PGM        PARM(&BIBLOT)
 
-             DCL        VAR(&NUMLOT) TYPE(*DEC) LEN(6 0) /* Numéro de lot +
+             DCL        VAR(&BIBLOT) TYPE(*CHAR) LEN(10) /* Numéro de lot +
                           à construire */
-             DCL        VAR(&NUMLOTC) TYPE(*CHAR) LEN(6) /* Numéro de lot +
-                          à construire en alpha*/
-
-             DCL        VAR(&BIBLOT) TYPE(*CHAR) LEN(10) /* Bibliothèque +
-                          du lot */
              DCL        VAR(&RETOUR) TYPE(*DEC) LEN(5 0)
-             DCLPRCOPT  DFTACTGRP(*NO) ACTGRP(*NEW) BNDDIR(VERSIONBND)
+             DCLPRCOPT  DFTACTGRP(*NO) ACTGRP(*NEW) BNDDIR(VERSIONBND +
+                          SERVICE)
 
              MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERREUR))
 
-             CHGVAR     VAR(&NUMLOTC) VALUE(&NUMLOT)
-             CHGVAR     VAR(&BIBLOT) VALUE('LOT_' *TCAT &NUMLOTC)
+
              DSPFD      FILE(&BIBLOT/*ALL) TYPE(*MBRLIST) OUTPUT(*OUTFILE) +
                           OUTFILE(QTEMP/LISTMEMBER)
 
