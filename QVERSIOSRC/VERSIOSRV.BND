@@ -2,7 +2,8 @@
     /*   >>CRTCMD<<  CRTSRVPGM SRCFILE(&SL/&SF) SRCMBR(&SM);         */
     /*   >>LINK<<                                                    */
     /*     >>PARM<<  SRVPGM(&LI/&SM);                                */
-    /*     >>PARM<<  MODULE(&LI/CONSTRUTYP);                         */
+    /*     >>PARM<<  MODULE(&LI/CONSTRUTYP +                         */
+    /*                       &LI/CREATION);                          */
     /*     >>PARM<<  BNDDIR(SERVICE);                                */
     /*     >>PARM<<  DETAIL(*FULL);                                  */
     /*     >>PARM<<  ALWLIBUPD(*YES);                                */
@@ -11,5 +12,6 @@
     /* >>END-PRE-COMPILER<<                                          */
 
              STRPGMEXP  PGMLVL(*CURRENT) SIGNATURE('VERSIONNING_0.1')
-                EXPORT     SYMBOL(ordonnanceur_construction)
+                EXPORT     SYMBOL(ORDONNANCEUR_CONSTRUCTION)
+                EXPORT     SYMBOL(CREATION)
              ENDPGMEXP

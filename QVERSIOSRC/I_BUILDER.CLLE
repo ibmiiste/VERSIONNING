@@ -1,10 +1,11 @@
       /* >>PRE-COMPILER<<                                                 */
       /*   >>CRTCMD<<  CRTBNDCL SRCFILE(&SL/&SF) SRCMBR(&SM);             */
-      /*   >>COMPILE<<                                                    */
+      /*   >>IMPORTANT<<                                                  */
+      /*     >>PARM<<  PGM(&LI/&OB);                                      */
       /*     >>PARM<<  OPTION(*EVENTF);                                   */
-      /*     >>PARM<<  DBGVIEW(*LIST);                                    */
       /*     >>PARM<<  OPTIMIZE(&U0);                                     */
-      /*   >>END-COMPILE<<                                                */
+      /*     >>PARM<<  DBGVIEW(*ALL);                                     */
+      /*   >>END-IMPORTANT<<                                              */
       /*   >>EXECUTE<<                                                    */
       /* >>END-PRE-COMPILER<<                                             */
              PGM        PARM(&NUMLOT)
@@ -16,7 +17,8 @@
 
              DCL        VAR(&BIBLOT) TYPE(*CHAR) LEN(10) /* Bibliothèque +
                           du lot */
-             DCLPRCOPT  DFTACTGRP(*NO) ACTGRP(*NEW) BNDDIR(VERSIOSRV)
+             DCL        VAR(&RETOUR) TYPE(*DEC) LEN(5 0)
+             DCLPRCOPT  DFTACTGRP(*NO) ACTGRP(*NEW) BNDDIR(VERSIONBND)
 
              MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERREUR))
 
