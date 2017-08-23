@@ -39,6 +39,8 @@
        dcl-s g_type_source like(r_qualified);
        dcl-ds ds_listmember extname('LISTMEMBER') qualified End-Ds;
 
+         exec sql close C_source;
+         exec sql close C_ORDRE;
 
          exec sql DECLARE C_ordre CURSOR FOR SELECT Type_source
                                                FROM ORDONNANCE
@@ -75,8 +77,13 @@
              exec sql FETCH FROM C_source INTO :ds_listmember;
            enddo;
 
+           exec sql close C_source;
+
            exec sql FETCH FROM C_ORDRE INTO :g_type_source;
          EndDo;
+
+         exec sql close C_source;
+         exec sql close C_ORDRE;
 
          return retour;
 
