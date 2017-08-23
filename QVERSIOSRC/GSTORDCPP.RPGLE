@@ -8,26 +8,25 @@
       // liste du personnel
       //*********************************************************************
       // d�claration des fichiers
-     fpgmf01fm  cf   e             workstn
-     f                                     sfile(sfl01 :wran01)
-     f                                     infds(dssfl1)
-     f                                     indds(IndDS)
-     ffic02l    if   e           k disk
-     f                                     infds(fic)
+       dcl- fgstordcmp workstn sfile(sfl01 :wran01) infds(dssfl1) indds(IndDS);
+
+
+       dcl-f ordonnance (*output:*update) keyed infds(fic);
 
       // main function prototype
       // prototype fonction principale
-     dliste_personnel  pr                  extpgm('PGMF01')
-     dliste_personnel  pi
+       dcl-pr gestion_ordre extpgm('GSTORDCPP');
+       dcl-pi gestion_ordre;
 
       // external functions prototypes
       // prototype fonctions externes
       // Gestion des messages
-     dgst_message      pr                  extpgm('PGM001CL')
-     d a_typ                               like(r_typmsg)
-     d a_fim                               like(r_nomobj)
-     d a_mid                               like(r_msgid)
-     d a_mdt                               like(r_msgdta)
+       dcl-pr gst_message extpgm('PGM001CL');
+         a_typ like(r_typmsg);
+         a_fim like(r_nomobj);
+         a_mid like(r_msgid);
+         a_mdt like(r_msgdta);
+       end-pr;
 
       // Appel de l'écran détail du personnel
      ddetail_personnel...
