@@ -1,0 +1,35 @@
+      /* >>PRE-COMPILER<<                                                 */
+      /*   >>CRTCMD<<  CRTBNDCL SRCFILE(&SL/&SF) SRCMBR(&SM);             */
+      /*   >>COMPILE<<                                                    */
+      /*     >>PARM<<  OPTION(*EVENTF);                                   */
+      /*     >>PARM<<  DBGVIEW(*LIST);                                    */
+      /*     >>PARM<<  OPTIMIZE(&U0);                                     */
+      /*   >>END-COMPILE<<                                                */
+      /*   >>EXECUTE<<                                                    */
+      /* >>END-PRE-COMPILER<<                                             */
+             PGM        PARM(&NUMLOT)
+
+             DCL        VAR(&NUMLOT) TYPE(*DEC) LEN(6 0) /* Numéro de lot +
+                          à construire */
+             DCL        VAR(&NUMLOTC) TYPE(*CHAR) LEN(6) /* Numéro de lot +
+                          à construire en alpha*/
+
+             DCL        VAR(&BIBLOT) TYPE(*CHAR) LEN(10) /* Bibliothèque +
+                          du lot */
+             DCLPRCOPT  DFTACTGRP(*NO) ACTGRP(*NEW) BNDDIR(VERSIOSRV)
+
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERREUR))
+
+             CHGVAR     VAR(&NUMLOTC) VALUE(&NUMLOT)
+             CHGVAR     VAR(&BIBLOT) VALUE('LOT_' *TCAT &NUMLOTC)
+             DSPFD      FILE(&BIBLOT/*ALL) TYPE(*MBRLIST) OUTPUT(*OUTFILE) +
+                          OUTFILE(QTEMP/LISTMEMBER)
+
+             CALLPRC    PRC(CONSTRUCTION_TYPE) RTNVAL(&RETOUR)
+
+
+
+ ERREUR:     DMPCLPGM
+             CALLPRC    PRC(GEST_ERREUR)
+
+ FIN:        ENDPGM

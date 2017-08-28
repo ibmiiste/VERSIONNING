@@ -1,0 +1,10 @@
+             PGM        PARM(&DS_LISTMEMBER &DS_PARAM_ENVIR)
+
+             STRPREPRC  USESRCFILE(&BIBSRC/&SRCFILE) USESRCMBR(&MEMBERSRC) +
+                          LIB(&LI) OBJ(&OB) TYPECODE(&TY) SRCLIB(&SL) +
+                          SRCFILE(&SF) SRCMBR(&SM) TESTLIB(&TL) +
+                          TESTOBJ(&TO) TGTRLS(&TR) FRMSRCLIB(&FL) +
+                          FRMSRCFILE(&FF) FRMSRCMBR(&FM) USER0(&U0) +
+                          USER1(&U1) USER2(&U2) USER3(&U3) USER4(&U4) +
+                          USER5(&U5) USER6(&U6) USER7(&U7) USER8(&U8) +
+                          USER9(&U9)
